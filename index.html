@@ -3,39 +3,46 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hans Garage | Bengkel & Reservasi</title>
+  <title>Hans Garage | Modern Auto Service</title>
 
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: Arial, sans-serif;
+      font-family: "Segoe UI", Arial, sans-serif;
+      scroll-behavior: smooth;
     }
 
     body {
-      background: #f4f4f4;
-      color: #222;
+      background: #070707;
+      color: #fff;
     }
 
     header {
-      background: #111;
-      color: white;
-      padding: 20px 60px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(12px);
+      padding: 18px 60px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      border-bottom: 1px solid rgba(255, 204, 0, 0.25);
     }
 
     header h1 {
       color: #ffcc00;
+      letter-spacing: 1px;
     }
 
     nav a {
       color: white;
       text-decoration: none;
-      margin-left: 20px;
-      font-weight: bold;
+      margin-left: 22px;
+      font-weight: 600;
+      font-size: 15px;
     }
 
     nav a:hover {
@@ -43,106 +50,174 @@
     }
 
     .hero {
-      background: linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.65)),
-      url("https://images.unsplash.com/photo-1487754180451-c456f719a1fc") center/cover;
-      height: 90vh;
-      color: white;
+      min-height: 90vh;
+      background:
+        linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.85)),
+        url("https://images.unsplash.com/photo-1487754180451-c456f719a1fc") center/cover;
       display: flex;
       align-items: center;
-      padding: 0 60px;
+      padding: 70px 60px;
     }
 
-    .hero-content {
-      max-width: 600px;
+    .hero-box {
+      max-width: 680px;
+      padding: 35px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,204,0,.35);
+      border-radius: 22px;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 0 35px rgba(255,204,0,.18);
     }
 
     .hero h2 {
-      font-size: 48px;
-      margin-bottom: 20px;
+      font-size: 52px;
       color: #ffcc00;
+      margin-bottom: 18px;
     }
 
     .hero p {
+      color: #eaeaea;
       font-size: 18px;
+      line-height: 1.7;
       margin-bottom: 30px;
-      line-height: 1.6;
     }
 
     .btn {
+      display: inline-block;
       background: #ffcc00;
       color: #111;
-      padding: 12px 25px;
+      padding: 13px 28px;
+      border-radius: 30px;
       text-decoration: none;
-      border-radius: 5px;
       font-weight: bold;
+      margin-right: 10px;
+      box-shadow: 0 0 18px rgba(255,204,0,.5);
+    }
+
+    .btn-dark {
+      background: transparent;
+      color: #ffcc00;
+      border: 1px solid #ffcc00;
     }
 
     section {
-      padding: 60px;
+      padding: 70px 60px;
     }
 
     .section-title {
       text-align: center;
-      margin-bottom: 40px;
-      font-size: 32px;
-      color: #111;
+      font-size: 34px;
+      color: #ffcc00;
+      margin-bottom: 15px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #bbb;
+      max-width: 700px;
+      margin: 0 auto 45px;
+      line-height: 1.6;
     }
 
     .about {
-      background: white;
-      line-height: 1.7;
+      background: #0d0d0d;
+    }
+
+    .about-box {
+      max-width: 900px;
+      margin: auto;
       text-align: center;
+      color: #ddd;
+      line-height: 1.8;
+      font-size: 17px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .stat-card {
+      background: linear-gradient(145deg, #151515, #0a0a0a);
+      padding: 28px;
+      text-align: center;
+      border-radius: 18px;
+      border: 1px solid rgba(255,204,0,.25);
+    }
+
+    .stat-card h3 {
+      color: #ffcc00;
+      font-size: 34px;
+      margin-bottom: 8px;
+    }
+
+    .stat-card p {
+      color: #ccc;
     }
 
     .services {
+      background: #070707;
+    }
+
+    .service-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 25px;
     }
 
     .card {
-      background: white;
-      padding: 25px;
-      border-radius: 10px;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,.1);
+      background: linear-gradient(145deg, #171717, #0b0b0b);
+      padding: 30px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: 0 10px 25px rgba(0,0,0,.35);
+      transition: .3s;
+    }
+
+    .card:hover {
+      transform: translateY(-7px);
+      border-color: #ffcc00;
+      box-shadow: 0 0 25px rgba(255,204,0,.18);
     }
 
     .card h3 {
-      margin-bottom: 15px;
+      color: #ffcc00;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: #ccc;
+      line-height: 1.6;
     }
 
     .portfolio {
-      background: #111;
-      color: white;
-    }
-
-    .portfolio .section-title {
-      color: #ffcc00;
+      background: #101010;
     }
 
     .portfolio-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 25px;
     }
 
     .portfolio-item {
-      background: #222;
-      border-radius: 10px;
+      background: #1a1a1a;
+      border-radius: 18px;
       overflow: hidden;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,.25);
-      transition: transform .3s ease;
+      border: 1px solid rgba(255,204,0,.18);
+      transition: .3s;
     }
 
     .portfolio-item:hover {
-      transform: translateY(-5px);
+      transform: scale(1.03);
+      box-shadow: 0 0 25px rgba(255,204,0,.2);
     }
 
     .portfolio-item img {
       width: 100%;
-      height: 220px;
+      height: 230px;
       object-fit: cover;
       display: block;
     }
@@ -162,82 +237,95 @@
     }
 
     .reservation {
-      background: white;
+      background: #070707;
     }
 
     form {
-      max-width: 600px;
+      max-width: 650px;
       margin: auto;
       display: flex;
       flex-direction: column;
       gap: 15px;
+      background: rgba(255,255,255,.06);
+      padding: 30px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,204,0,.25);
+      box-shadow: 0 0 30px rgba(255,204,0,.08);
     }
 
     input, select, textarea {
-      padding: 12px;
-      border: 1px solid #aaa;
-      border-radius: 5px;
+      padding: 14px;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 10px;
       font-size: 15px;
+      background: #111;
+      color: white;
+      outline: none;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: #ffcc00;
     }
 
     button {
-      padding: 13px;
+      padding: 14px;
       border: none;
-      background: #111;
-      color: white;
+      background: #ffcc00;
+      color: #111;
       font-size: 16px;
-      border-radius: 5px;
+      border-radius: 30px;
       cursor: pointer;
       font-weight: bold;
     }
 
     button:hover {
-      background: #ffcc00;
-      color: #111;
+      background: white;
     }
 
-    #infoAntrian {
-      background: #fff3cd;
-      color: #856404;
-      padding: 12px;
-      border-radius: 5px;
+    #infoAntrian, #estimasiBiaya {
+      background: rgba(255,204,0,.12);
+      color: #ffcc00;
+      padding: 13px;
+      border-radius: 10px;
       display: none;
+      border: 1px solid rgba(255,204,0,.3);
       font-weight: bold;
     }
 
     .contact {
-      background: #222;
-      color: white;
+      background: #111;
       text-align: center;
-      line-height: 1.8;
+      line-height: 1.9;
     }
 
-    .contact .section-title {
-      color: #ffcc00;
+    .contact p {
+      color: #ddd;
     }
 
     footer {
-      background: #111;
-      color: white;
+      background: #050505;
+      color: #aaa;
       text-align: center;
-      padding: 15px;
+      padding: 18px;
+      border-top: 1px solid rgba(255,204,0,.2);
     }
 
     .chatbot {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      width: 310px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0,0,0,.3);
+      width: 330px;
+      background: #111;
+      border-radius: 18px;
+      box-shadow: 0 0 25px rgba(255,204,0,.25);
       overflow: hidden;
       z-index: 999;
+      border: 1px solid rgba(255,204,0,.3);
     }
 
     .chat-header {
-      background: #111;
-      color: #ffcc00;
+      background: #ffcc00;
+      color: #111;
       padding: 15px;
       font-weight: bold;
       cursor: pointer;
@@ -248,21 +336,21 @@
       height: 280px;
       padding: 15px;
       overflow-y: auto;
-      background: #f4f4f4;
+      background: #0c0c0c;
       display: block;
     }
 
     .bot-message, .user-message {
       padding: 10px;
       margin-bottom: 10px;
-      border-radius: 8px;
+      border-radius: 10px;
       line-height: 1.4;
       font-size: 14px;
     }
 
     .bot-message {
-      background: #e0e0e0;
-      color: #111;
+      background: #222;
+      color: #eee;
     }
 
     .user-message {
@@ -273,14 +361,14 @@
 
     .chat-input {
       display: flex;
-      border-top: 1px solid #ccc;
+      border-top: 1px solid rgba(255,255,255,.15);
     }
 
     .chat-input input {
       flex: 1;
       border: none;
-      padding: 12px;
-      outline: none;
+      border-radius: 0;
+      background: #151515;
     }
 
     .chat-input button {
@@ -295,13 +383,17 @@
         padding: 20px;
       }
 
+      nav {
+        text-align: center;
+      }
+
       nav a {
+        display: inline-block;
         margin: 8px;
       }
 
       .hero {
-        padding: 30px;
-        height: 80vh;
+        padding: 40px 25px;
       }
 
       .hero h2 {
@@ -309,7 +401,7 @@
       }
 
       section {
-        padding: 40px 25px;
+        padding: 50px 25px;
       }
 
       .chatbot {
@@ -335,29 +427,56 @@
 </header>
 
 <section class="hero" id="home">
-  <div class="hero-content">
-    <h2>Bengkel Terpercaya untuk Kendaraan Anda</h2>
+  <div class="hero-box">
+    <h2>Smart Garage untuk Kendaraan Anda</h2>
     <p>
-      Hans Garage melayani perawatan, perbaikan, servis berkala, ganti oli,
-      tune up, pengecekan mesin, dan konsultasi kendaraan dengan pelayanan profesional.
+      Hans Garage menghadirkan layanan bengkel modern dengan reservasi online,
+      estimasi biaya otomatis, pengecekan antrian, dan konsultasi cepat melalui WhatsApp.
     </p>
     <a href="#reservasi" class="btn">Reservasi Sekarang</a>
+    <a href="#portfolio" class="btn btn-dark">Lihat Portofolio</a>
   </div>
 </section>
 
 <section class="about" id="about">
   <h2 class="section-title">Tentang Hans Garage</h2>
-  <p>
-    Hans Garage adalah bengkel otomotif yang berfokus pada kualitas pelayanan,
-    ketelitian pengerjaan, dan kepuasan pelanggan. Kami siap membantu kendaraan
-    Anda agar tetap nyaman, aman, dan prima digunakan setiap hari.
+  <p class="section-subtitle">
+    Bengkel modern dengan pelayanan profesional, pengerjaan teliti, dan sistem reservasi yang memudahkan pelanggan.
   </p>
+
+  <div class="about-box">
+    Hans Garage berfokus pada perawatan kendaraan, perbaikan mesin, kelistrikan,
+    rem, kaki-kaki, dan konsultasi teknis kendaraan. Dengan konsep modern dan futuristik,
+    pelanggan dapat melihat layanan, portofolio, estimasi biaya, serta melakukan reservasi secara online.
+  </div>
+
+  <div class="stats">
+    <div class="stat-card">
+      <h3>500+</h3>
+      <p>Kendaraan Ditangani</p>
+    </div>
+    <div class="stat-card">
+      <h3>8+</h3>
+      <p>Layanan Utama</p>
+    </div>
+    <div class="stat-card">
+      <h3>6</h3>
+      <p>Hari Operasional</p>
+    </div>
+    <div class="stat-card">
+      <h3>24/7</h3>
+      <p>Reservasi Online</p>
+    </div>
+  </div>
 </section>
 
-<section id="layanan">
+<section class="services" id="layanan">
   <h2 class="section-title">Layanan Bengkel</h2>
+  <p class="section-subtitle">
+    Pilih layanan sesuai kebutuhan kendaraan Anda.
+  </p>
 
-  <div class="services">
+  <div class="service-grid">
     <div class="card">
       <h3>Servis Berkala</h3>
       <p>Pemeriksaan rutin kendaraan agar performa tetap optimal.</p>
@@ -392,11 +511,13 @@
 
 <section class="portfolio" id="portfolio">
   <h2 class="section-title">Portofolio Pekerjaan</h2>
+  <p class="section-subtitle">
+    Dokumentasi pekerjaan dan layanan yang telah dilakukan Hans Garage.
+  </p>
 
   <div class="portfolio-grid">
-
     <div class="portfolio-item">
-      <img src="1.jpeg" alt="Servis Berkala Hans Garage">
+      <img src="1.jpeg" alt="Servis Berkala">
       <div class="portfolio-content">
         <h3>Servis Berkala</h3>
         <p>Perawatan rutin kendaraan pelanggan agar performa tetap optimal.</p>
@@ -404,7 +525,7 @@
     </div>
 
     <div class="portfolio-item">
-      <img src="2.jpeg" alt="Perbaikan Mesin Hans Garage">
+      <img src="2.jpeg" alt="Perbaikan Mesin">
       <div class="portfolio-content">
         <h3>Perbaikan Mesin</h3>
         <p>Diagnosa dan perbaikan mesin kendaraan berbagai tipe.</p>
@@ -412,7 +533,7 @@
     </div>
 
     <div class="portfolio-item">
-      <img src="3.jpeg" alt="Ganti Oli Hans Garage">
+      <img src="3.jpeg" alt="Ganti Oli">
       <div class="portfolio-content">
         <h3>Ganti Oli</h3>
         <p>Penggantian oli mesin dan filter untuk menjaga performa kendaraan.</p>
@@ -420,7 +541,7 @@
     </div>
 
     <div class="portfolio-item">
-      <img src="4.jpeg" alt="Tune Up Hans Garage">
+      <img src="4.jpeg" alt="Tune Up">
       <div class="portfolio-content">
         <h3>Tune Up</h3>
         <p>Penyetelan sistem kendaraan agar lebih responsif dan efisien.</p>
@@ -428,7 +549,7 @@
     </div>
 
     <div class="portfolio-item">
-      <img src="5.jpeg" alt="Perawatan Rem Hans Garage">
+      <img src="5.jpeg" alt="Perawatan Rem">
       <div class="portfolio-content">
         <h3>Perawatan Rem</h3>
         <p>Pengecekan kampas rem, minyak rem, dan sistem pengereman.</p>
@@ -436,7 +557,7 @@
     </div>
 
     <div class="portfolio-item">
-      <img src="6.jpeg" alt="Kelistrikan Mobil Hans Garage">
+      <img src="6.jpeg" alt="Kelistrikan Motor">
       <div class="portfolio-content">
         <h3>Kelistrikan Motor</h3>
         <p>Perbaikan aki, starter, lampu, dan sistem kelistrikan kendaraan.</p>
@@ -444,7 +565,7 @@
     </div>
 
     <div class="portfolio-item">
-      <img src="7.jpeg" alt="Overhaul Mesin Hans Garage">
+      <img src="7.jpeg" alt="Overhaul Mesin">
       <div class="portfolio-content">
         <h3>Overhaul Mesin</h3>
         <p>Penanganan kendaraan dengan kerusakan mesin yang lebih kompleks.</p>
@@ -452,33 +573,37 @@
     </div>
 
     <div class="portfolio-item">
-      <img src="8.jpeg" alt="Custom dan Modifikasi Hans Garage">
+      <img src="8.jpeg" alt="Custom Modifikasi">
       <div class="portfolio-content">
         <h3>Custom & Modifikasi</h3>
         <p>Pengerjaan modifikasi dan peningkatan performa kendaraan.</p>
       </div>
     </div>
-
   </div>
 </section>
 
 <section class="reservation" id="reservasi">
-  <h2 class="section-title">Form Reservasi Bengkel</h2>
+  <h2 class="section-title">Reservasi Online</h2>
+  <p class="section-subtitle">
+    Isi data reservasi, sistem akan memberikan nomor antrian dan estimasi biaya awal.
+  </p>
 
   <form onsubmit="kirimReservasi(event)">
     <input type="text" id="nama" placeholder="Nama Lengkap" required>
     <input type="text" id="telepon" placeholder="Nomor WhatsApp" required>
     <input type="text" id="kendaraan" placeholder="Jenis Kendaraan / Plat Nomor" required>
 
-    <select id="layananDipilih" required>
+    <select id="layananDipilih" onchange="hitungEstimasi()" required>
       <option value="">Pilih Layanan</option>
-      <option>Servis Berkala</option>
-      <option>Ganti Oli</option>
-      <option>Tune Up</option>
-      <option>Perbaikan Mesin</option>
-      <option>Kelistrikan</option>
-      <option>Rem dan Kaki-kaki</option>
+      <option value="Servis Berkala">Servis Berkala</option>
+      <option value="Ganti Oli">Ganti Oli</option>
+      <option value="Tune Up">Tune Up</option>
+      <option value="Perbaikan Mesin">Perbaikan Mesin</option>
+      <option value="Kelistrikan">Kelistrikan</option>
+      <option value="Rem dan Kaki-kaki">Rem dan Kaki-kaki</option>
     </select>
+
+    <div id="estimasiBiaya"></div>
 
     <input type="date" id="tanggal" onchange="cekAntrian()" required>
 
@@ -488,7 +613,7 @@
 
     <textarea id="keluhan" rows="5" placeholder="Tuliskan keluhan kendaraan"></textarea>
 
-    <button type="submit">Kirim Reservasi</button>
+    <button type="submit">Kirim Reservasi ke WhatsApp</button>
   </form>
 </section>
 
@@ -509,7 +634,7 @@
 
   <div class="chat-body" id="chatBody">
     <div class="bot-message">
-      Halo! Saya Hans Garage Bot. Silakan tanya layanan, harga, jam buka, reservasi, atau jumlah antrian.
+      Halo! Saya Hans Garage Bot. Tanyakan layanan, harga, jam buka, reservasi, atau antrian.
     </div>
   </div>
 
@@ -520,6 +645,33 @@
 </div>
 
 <script>
+  const hargaLayanan = {
+    "Servis Berkala": 150000,
+    "Ganti Oli": 75000,
+    "Tune Up": 200000,
+    "Perbaikan Mesin": 300000,
+    "Kelistrikan": 180000,
+    "Rem dan Kaki-kaki": 220000
+  };
+
+  function formatRupiah(angka) {
+    return "Rp " + angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  }
+
+  function hitungEstimasi() {
+    let layanan = document.getElementById("layananDipilih").value;
+    let estimasi = document.getElementById("estimasiBiaya");
+
+    if (layanan === "") {
+      estimasi.style.display = "none";
+      return;
+    }
+
+    let harga = hargaLayanan[layanan];
+    estimasi.style.display = "block";
+    estimasi.innerHTML = "Estimasi biaya awal: " + formatRupiah(harga) + " - dapat berubah sesuai kondisi kendaraan.";
+  }
+
   function cekAntrian() {
     let tanggal = document.getElementById("tanggal").value;
     let infoAntrian = document.getElementById("infoAntrian");
@@ -551,6 +703,7 @@
     let tanggal = document.getElementById("tanggal").value;
     let jam = document.getElementById("jam").value;
     let keluhan = document.getElementById("keluhan").value;
+    let estimasiHarga = hargaLayanan[layanan];
 
     let dataAntrian = JSON.parse(localStorage.getItem("antrianHansGarage")) || {};
 
@@ -566,8 +719,10 @@
       telepon: telepon,
       kendaraan: kendaraan,
       layanan: layanan,
+      tanggal: tanggal,
       jam: jam,
-      keluhan: keluhan
+      keluhan: keluhan,
+      estimasi: estimasiHarga
     });
 
     localStorage.setItem("antrianHansGarage", JSON.stringify(dataAntrian));
@@ -575,7 +730,8 @@
     let pesan =
       "Reservasi Bengkel Hans Garage%0A%0A" +
       "Nomor Antrian: " + nomorAntrian + "%0A" +
-      "Jumlah Antrian Hari Ini: " + dataAntrian[tanggal].length + "%0A%0A" +
+      "Jumlah Antrian Hari Ini: " + dataAntrian[tanggal].length + "%0A" +
+      "Estimasi Biaya: " + formatRupiah(estimasiHarga) + "%0A%0A" +
       "Nama: " + nama + "%0A" +
       "No HP: " + telepon + "%0A" +
       "Kendaraan: " + kendaraan + "%0A" +
@@ -591,6 +747,7 @@
 
     event.target.reset();
     document.getElementById("infoAntrian").style.display = "none";
+    document.getElementById("estimasiBiaya").style.display = "none";
   }
 
   function toggleChat() {
@@ -638,27 +795,23 @@
       return "Hans Garage buka Senin sampai Sabtu, pukul 08.00 - 17.00.";
     }
 
+    else if (text.includes("harga") || text.includes("biaya")) {
+      return "Estimasi harga: Ganti Oli Rp75.000, Servis Berkala Rp150.000, Tune Up Rp200.000, Perbaikan Mesin mulai Rp300.000.";
+    }
+
     else if (text.includes("alamat") || text.includes("lokasi")) {
       return "Alamat Hans Garage berada di Surabaya, Jawa Timur.";
     }
 
-    else if (text.includes("harga") || text.includes("biaya")) {
-      return "Biaya servis tergantung jenis kendaraan dan keluhan. Silakan reservasi atau hubungi admin untuk estimasi harga.";
-    }
-
-    else if (text.includes("oli")) {
-      return "Untuk ganti oli, kami melayani oli mesin, oli transmisi, dan penggantian filter oli.";
-    }
-
     else if (text.includes("reservasi") || text.includes("booking")) {
-      return "Silakan isi form reservasi pada halaman ini. Setelah dikirim, data akan masuk ke WhatsApp admin Hans Garage.";
+      return "Silakan isi form reservasi. Setelah dikirim, data akan langsung masuk ke WhatsApp admin.";
     }
 
     else if (text.includes("antrian")) {
       let tanggalDipilih = document.getElementById("tanggal").value;
 
       if (tanggalDipilih === "") {
-        return "Silakan pilih tanggal reservasi terlebih dahulu pada form, nanti saya bantu cek jumlah antriannya.";
+        return "Silakan pilih tanggal reservasi terlebih dahulu untuk mengecek jumlah antrian.";
       }
 
       let jumlah = dataAntrian[tanggalDipilih] ? dataAntrian[tanggalDipilih].length : 0;
@@ -674,7 +827,7 @@
     }
 
     else {
-      return "Maaf, saya belum memahami pertanyaan tersebut. Silakan tanyakan tentang layanan, jam buka, harga, reservasi, kontak, atau antrian.";
+      return "Maaf, saya belum memahami pertanyaan tersebut. Silakan tanyakan tentang layanan, harga, jam buka, reservasi, kontak, atau antrian.";
     }
   }
 </script>
