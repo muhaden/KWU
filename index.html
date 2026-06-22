@@ -94,15 +94,13 @@
       text-align: center;
     }
 
-    .services,
-    .portfolio-grid {
+    .services {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 25px;
     }
 
-    .card,
-    .portfolio-item {
+    .card {
       background: white;
       padding: 25px;
       border-radius: 10px;
@@ -110,8 +108,7 @@
       box-shadow: 0 4px 10px rgba(0,0,0,.1);
     }
 
-    .card h3,
-    .portfolio-item h3 {
+    .card h3 {
       margin-bottom: 15px;
     }
 
@@ -124,8 +121,44 @@
       color: #ffcc00;
     }
 
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
     .portfolio-item {
       background: #222;
+      border-radius: 10px;
+      overflow: hidden;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,.25);
+      transition: transform .3s ease;
+    }
+
+    .portfolio-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .portfolio-item img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .portfolio-content {
+      padding: 20px;
+    }
+
+    .portfolio-content h3 {
+      color: #ffcc00;
+      margin-bottom: 10px;
+    }
+
+    .portfolio-content p {
+      color: #ddd;
+      line-height: 1.5;
     }
 
     .reservation {
@@ -177,6 +210,10 @@
       color: white;
       text-align: center;
       line-height: 1.8;
+    }
+
+    .contact .section-title {
+      color: #ffcc00;
     }
 
     footer {
@@ -264,6 +301,7 @@
 
       .hero {
         padding: 30px;
+        height: 80vh;
       }
 
       .hero h2 {
@@ -290,6 +328,7 @@
     <a href="#home">Home</a>
     <a href="#about">Tentang</a>
     <a href="#layanan">Layanan</a>
+    <a href="#portfolio">Portofolio</a>
     <a href="#reservasi">Reservasi</a>
     <a href="#kontak">Kontak</a>
   </nav>
@@ -310,7 +349,8 @@
   <h2 class="section-title">Tentang Hans Garage</h2>
   <p>
     Hans Garage adalah bengkel otomotif yang berfokus pada kualitas pelayanan,
-    ketelitian pengerjaan, dan kepuasan pelanggan.
+    ketelitian pengerjaan, dan kepuasan pelanggan. Kami siap membantu kendaraan
+    Anda agar tetap nyaman, aman, dan prima digunakan setiap hari.
   </p>
 </section>
 
@@ -350,29 +390,75 @@
   </div>
 </section>
 
-<section class="portfolio">
+<section class="portfolio" id="portfolio">
   <h2 class="section-title">Portofolio Pekerjaan</h2>
 
   <div class="portfolio-grid">
+
     <div class="portfolio-item">
-      <h3>Servis Mobil Harian</h3>
-      <p>Perawatan kendaraan pelanggan untuk penggunaan harian.</p>
+      <img src="1.jpeg" alt="Servis Berkala Hans Garage">
+      <div class="portfolio-content">
+        <h3>Servis Berkala</h3>
+        <p>Perawatan rutin kendaraan pelanggan agar performa tetap optimal.</p>
+      </div>
     </div>
 
     <div class="portfolio-item">
-      <h3>Perbaikan Mesin</h3>
-      <p>Menangani kendaraan dengan kendala mesin kurang bertenaga.</p>
+      <img src="2.jpeg" alt="Perbaikan Mesin Hans Garage">
+      <div class="portfolio-content">
+        <h3>Perbaikan Mesin</h3>
+        <p>Diagnosa dan perbaikan mesin kendaraan berbagai tipe.</p>
+      </div>
     </div>
 
     <div class="portfolio-item">
-      <h3>Perawatan Rem</h3>
-      <p>Pengecekan kampas rem, minyak rem, dan sistem pengereman.</p>
+      <img src="3.jpeg" alt="Ganti Oli Hans Garage">
+      <div class="portfolio-content">
+        <h3>Ganti Oli</h3>
+        <p>Penggantian oli mesin dan filter untuk menjaga performa kendaraan.</p>
+      </div>
     </div>
 
     <div class="portfolio-item">
-      <h3>Kelistrikan Mobil</h3>
-      <p>Perbaikan lampu, aki, sistem starter, dan pengecekan kabel.</p>
+      <img src="4.jpeg" alt="Tune Up Hans Garage">
+      <div class="portfolio-content">
+        <h3>Tune Up</h3>
+        <p>Penyetelan sistem kendaraan agar lebih responsif dan efisien.</p>
+      </div>
     </div>
+
+    <div class="portfolio-item">
+      <img src="5.jpeg" alt="Perawatan Rem Hans Garage">
+      <div class="portfolio-content">
+        <h3>Perawatan Rem</h3>
+        <p>Pengecekan kampas rem, minyak rem, dan sistem pengereman.</p>
+      </div>
+    </div>
+
+    <div class="portfolio-item">
+      <img src="6.jpeg" alt="Kelistrikan Mobil Hans Garage">
+      <div class="portfolio-content">
+        <h3>Kelistrikan Motor</h3>
+        <p>Perbaikan aki, starter, lampu, dan sistem kelistrikan kendaraan.</p>
+      </div>
+    </div>
+
+    <div class="portfolio-item">
+      <img src="7.jpeg" alt="Overhaul Mesin Hans Garage">
+      <div class="portfolio-content">
+        <h3>Overhaul Mesin</h3>
+        <p>Penanganan kendaraan dengan kerusakan mesin yang lebih kompleks.</p>
+      </div>
+    </div>
+
+    <div class="portfolio-item">
+      <img src="8.jpeg" alt="Custom dan Modifikasi Hans Garage">
+      <div class="portfolio-content">
+        <h3>Custom & Modifikasi</h3>
+        <p>Pengerjaan modifikasi dan peningkatan performa kendaraan.</p>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -407,7 +493,7 @@
 </section>
 
 <section class="contact" id="kontak">
-  <h2 class="section-title" style="color:#ffcc00;">Kontak Kami</h2>
+  <h2 class="section-title">Kontak Kami</h2>
   <p>Alamat: Surabaya, Jawa Timur</p>
   <p>WhatsApp: 085604445893</p>
   <p>Email: hansgarage@gmail.com</p>
