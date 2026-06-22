@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hans Garage | Bengkel & Reservasi</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f4f4f4;
+      color: #222;
+    }
+
+    header {
+      background: #111;
+      color: white;
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      color: #ffcc00;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #ffcc00;
+    }
+
+    .hero {
+      background: linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.65)),
+      url("https://images.unsplash.com/photo-1487754180451-c456f719a1fc") center/cover;
+      height: 90vh;
+      color: white;
+      display: flex;
+      align-items: center;
+      padding: 0 60px;
+    }
+
+    .hero-content {
+      max-width: 600px;
+    }
+
+    .hero h2 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      color: #ffcc00;
+    }
+
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .btn {
+      background: #ffcc00;
+      color: #111;
+      padding: 12px 25px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    section {
+      padding: 60px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 32px;
+      color: #111;
+    }
+
+    .about {
+      background: white;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .services,
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+    }
+
+    .card,
+    .portfolio-item {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,.1);
+    }
+
+    .card h3,
+    .portfolio-item h3 {
+      margin-bottom: 15px;
+    }
+
+    .portfolio {
+      background: #111;
+      color: white;
+    }
+
+    .portfolio .section-title {
+      color: #ffcc00;
+    }
+
+    .portfolio-item {
+      background: #222;
+    }
+
+    .reservation {
+      background: white;
+    }
+
+    form {
+      max-width: 600px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input, select, textarea {
+      padding: 12px;
+      border: 1px solid #aaa;
+      border-radius: 5px;
+      font-size: 15px;
+    }
+
+    button {
+      padding: 13px;
+      border: none;
+      background: #111;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: #ffcc00;
+      color: #111;
+    }
+
+    #infoAntrian {
+      background: #fff3cd;
+      color: #856404;
+      padding: 12px;
+      border-radius: 5px;
+      display: none;
+      font-weight: bold;
+    }
+
+    .contact {
+      background: #222;
+      color: white;
+      text-align: center;
+      line-height: 1.8;
+    }
+
+    footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 15px;
+    }
+
+    .chatbot {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 310px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,.3);
+      overflow: hidden;
+      z-index: 999;
+    }
+
+    .chat-header {
+      background: #111;
+      color: #ffcc00;
+      padding: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .chat-body {
+      height: 280px;
+      padding: 15px;
+      overflow-y: auto;
+      background: #f4f4f4;
+      display: block;
+    }
+
+    .bot-message, .user-message {
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      line-height: 1.4;
+      font-size: 14px;
+    }
+
+    .bot-message {
+      background: #e0e0e0;
+      color: #111;
+    }
+
+    .user-message {
+      background: #ffcc00;
+      color: #111;
+      text-align: right;
+    }
+
+    .chat-input {
+      display: flex;
+      border-top: 1px solid #ccc;
+    }
+
+    .chat-input input {
+      flex: 1;
+      border: none;
+      padding: 12px;
+      outline: none;
+    }
+
+    .chat-input button {
+      width: 80px;
+      border-radius: 0;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+      }
+
+      nav a {
+        margin: 8px;
+      }
+
+      .hero {
+        padding: 30px;
+      }
+
+      .hero h2 {
+        font-size: 36px;
+      }
+
+      section {
+        padding: 40px 25px;
+      }
+
+      .chatbot {
+        width: 90%;
+        right: 5%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Hans Garage</h1>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">Tentang</a>
+    <a href="#layanan">Layanan</a>
+    <a href="#reservasi">Reservasi</a>
+    <a href="#kontak">Kontak</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-content">
+    <h2>Bengkel Terpercaya untuk Kendaraan Anda</h2>
+    <p>
+      Hans Garage melayani perawatan, perbaikan, servis berkala, ganti oli,
+      tune up, pengecekan mesin, dan konsultasi kendaraan dengan pelayanan profesional.
+    </p>
+    <a href="#reservasi" class="btn">Reservasi Sekarang</a>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <h2 class="section-title">Tentang Hans Garage</h2>
+  <p>
+    Hans Garage adalah bengkel otomotif yang berfokus pada kualitas pelayanan,
+    ketelitian pengerjaan, dan kepuasan pelanggan.
+  </p>
+</section>
+
+<section id="layanan">
+  <h2 class="section-title">Layanan Bengkel</h2>
+
+  <div class="services">
+    <div class="card">
+      <h3>Servis Berkala</h3>
+      <p>Pemeriksaan rutin kendaraan agar performa tetap optimal.</p>
+    </div>
+
+    <div class="card">
+      <h3>Ganti Oli</h3>
+      <p>Penggantian oli mesin, oli transmisi, dan filter oli.</p>
+    </div>
+
+    <div class="card">
+      <h3>Tune Up</h3>
+      <p>Penyetelan mesin agar kendaraan lebih responsif dan irit.</p>
+    </div>
+
+    <div class="card">
+      <h3>Perbaikan Mesin</h3>
+      <p>Diagnosa dan perbaikan masalah pada mesin kendaraan.</p>
+    </div>
+
+    <div class="card">
+      <h3>Kelistrikan</h3>
+      <p>Pengecekan aki, lampu, starter, alternator, dan sistem elektrik.</p>
+    </div>
+
+    <div class="card">
+      <h3>Rem & Kaki-kaki</h3>
+      <p>Perawatan sistem pengereman dan kenyamanan berkendara.</p>
+    </div>
+  </div>
+</section>
+
+<section class="portfolio">
+  <h2 class="section-title">Portofolio Pekerjaan</h2>
+
+  <div class="portfolio-grid">
+    <div class="portfolio-item">
+      <h3>Servis Mobil Harian</h3>
+      <p>Perawatan kendaraan pelanggan untuk penggunaan harian.</p>
+    </div>
+
+    <div class="portfolio-item">
+      <h3>Perbaikan Mesin</h3>
+      <p>Menangani kendaraan dengan kendala mesin kurang bertenaga.</p>
+    </div>
+
+    <div class="portfolio-item">
+      <h3>Perawatan Rem</h3>
+      <p>Pengecekan kampas rem, minyak rem, dan sistem pengereman.</p>
+    </div>
+
+    <div class="portfolio-item">
+      <h3>Kelistrikan Mobil</h3>
+      <p>Perbaikan lampu, aki, sistem starter, dan pengecekan kabel.</p>
+    </div>
+  </div>
+</section>
+
+<section class="reservation" id="reservasi">
+  <h2 class="section-title">Form Reservasi Bengkel</h2>
+
+  <form onsubmit="kirimReservasi(event)">
+    <input type="text" id="nama" placeholder="Nama Lengkap" required>
+    <input type="text" id="telepon" placeholder="Nomor WhatsApp" required>
+    <input type="text" id="kendaraan" placeholder="Jenis Kendaraan / Plat Nomor" required>
+
+    <select id="layananDipilih" required>
+      <option value="">Pilih Layanan</option>
+      <option>Servis Berkala</option>
+      <option>Ganti Oli</option>
+      <option>Tune Up</option>
+      <option>Perbaikan Mesin</option>
+      <option>Kelistrikan</option>
+      <option>Rem dan Kaki-kaki</option>
+    </select>
+
+    <input type="date" id="tanggal" onchange="cekAntrian()" required>
+
+    <div id="infoAntrian"></div>
+
+    <input type="time" id="jam" required>
+
+    <textarea id="keluhan" rows="5" placeholder="Tuliskan keluhan kendaraan"></textarea>
+
+    <button type="submit">Kirim Reservasi</button>
+  </form>
+</section>
+
+<section class="contact" id="kontak">
+  <h2 class="section-title" style="color:#ffcc00;">Kontak Kami</h2>
+  <p>Alamat: Surabaya, Jawa Timur</p>
+  <p>WhatsApp: 085604445893</p>
+  <p>Email: hansgarage@gmail.com</p>
+  <p>Jam Operasional: Senin - Sabtu, 08.00 - 17.00</p>
+</section>
+
+<footer>
+  <p>&copy; 2026 Hans Garage. All Rights Reserved.</p>
+</footer>
+
+<div class="chatbot">
+  <div class="chat-header" onclick="toggleChat()">Hans Garage Bot 💬</div>
+
+  <div class="chat-body" id="chatBody">
+    <div class="bot-message">
+      Halo! Saya Hans Garage Bot. Silakan tanya layanan, harga, jam buka, reservasi, atau jumlah antrian.
+    </div>
+  </div>
+
+  <div class="chat-input">
+    <input type="text" id="userInput" placeholder="Tulis pertanyaan..." onkeypress="enterChat(event)">
+    <button onclick="sendChat()">Kirim</button>
+  </div>
+</div>
+
+<script>
+  function cekAntrian() {
+    let tanggal = document.getElementById("tanggal").value;
+    let infoAntrian = document.getElementById("infoAntrian");
+
+    if (tanggal === "") {
+      infoAntrian.style.display = "none";
+      return;
+    }
+
+    let dataAntrian = JSON.parse(localStorage.getItem("antrianHansGarage")) || {};
+    let jumlah = dataAntrian[tanggal] ? dataAntrian[tanggal].length : 0;
+
+    infoAntrian.style.display = "block";
+
+    if (jumlah === 0) {
+      infoAntrian.innerHTML = "Belum ada antrian pada tanggal ini.";
+    } else {
+      infoAntrian.innerHTML = "Sudah ada " + jumlah + " antrian pada tanggal ini.";
+    }
+  }
+
+  function kirimReservasi(event) {
+    event.preventDefault();
+
+    let nama = document.getElementById("nama").value;
+    let telepon = document.getElementById("telepon").value;
+    let kendaraan = document.getElementById("kendaraan").value;
+    let layanan = document.getElementById("layananDipilih").value;
+    let tanggal = document.getElementById("tanggal").value;
+    let jam = document.getElementById("jam").value;
+    let keluhan = document.getElementById("keluhan").value;
+
+    let dataAntrian = JSON.parse(localStorage.getItem("antrianHansGarage")) || {};
+
+    if (!dataAntrian[tanggal]) {
+      dataAntrian[tanggal] = [];
+    }
+
+    let nomorAntrian = dataAntrian[tanggal].length + 1;
+
+    dataAntrian[tanggal].push({
+      nomor: nomorAntrian,
+      nama: nama,
+      telepon: telepon,
+      kendaraan: kendaraan,
+      layanan: layanan,
+      jam: jam,
+      keluhan: keluhan
+    });
+
+    localStorage.setItem("antrianHansGarage", JSON.stringify(dataAntrian));
+
+    let pesan =
+      "Reservasi Bengkel Hans Garage%0A%0A" +
+      "Nomor Antrian: " + nomorAntrian + "%0A" +
+      "Jumlah Antrian Hari Ini: " + dataAntrian[tanggal].length + "%0A%0A" +
+      "Nama: " + nama + "%0A" +
+      "No HP: " + telepon + "%0A" +
+      "Kendaraan: " + kendaraan + "%0A" +
+      "Layanan: " + layanan + "%0A" +
+      "Tanggal: " + tanggal + "%0A" +
+      "Jam: " + jam + "%0A" +
+      "Keluhan: " + keluhan;
+
+    let nomorAdmin = "6285604445893";
+    window.open("https://wa.me/" + nomorAdmin + "?text=" + pesan, "_blank");
+
+    alert("Reservasi berhasil! Nomor antrian Anda: " + nomorAntrian);
+
+    event.target.reset();
+    document.getElementById("infoAntrian").style.display = "none";
+  }
+
+  function toggleChat() {
+    const body = document.getElementById("chatBody");
+    body.style.display = body.style.display === "none" ? "block" : "none";
+  }
+
+  function enterChat(event) {
+    if (event.key === "Enter") {
+      sendChat();
+    }
+  }
+
+  function sendChat() {
+    const input = document.getElementById("userInput");
+    const chatBody = document.getElementById("chatBody");
+    const userText = input.value.trim();
+
+    if (userText === "") return;
+
+    chatBody.innerHTML += `<div class="user-message">${userText}</div>`;
+
+    let botReply = jawabBot(userText.toLowerCase());
+
+    setTimeout(() => {
+      chatBody.innerHTML += `<div class="bot-message">${botReply}</div>`;
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }, 400);
+
+    input.value = "";
+  }
+
+  function jawabBot(text) {
+    let dataAntrian = JSON.parse(localStorage.getItem("antrianHansGarage")) || {};
+
+    if (text.includes("halo") || text.includes("hai")) {
+      return "Halo! Selamat datang di Hans Garage. Mau servis kendaraan atau reservasi?";
+    }
+
+    else if (text.includes("layanan") || text.includes("servis")) {
+      return "Kami melayani servis berkala, ganti oli, tune up, perbaikan mesin, kelistrikan, rem, dan kaki-kaki.";
+    }
+
+    else if (text.includes("jam") || text.includes("buka")) {
+      return "Hans Garage buka Senin sampai Sabtu, pukul 08.00 - 17.00.";
+    }
+
+    else if (text.includes("alamat") || text.includes("lokasi")) {
+      return "Alamat Hans Garage berada di Surabaya, Jawa Timur.";
+    }
+
+    else if (text.includes("harga") || text.includes("biaya")) {
+      return "Biaya servis tergantung jenis kendaraan dan keluhan. Silakan reservasi atau hubungi admin untuk estimasi harga.";
+    }
+
+    else if (text.includes("oli")) {
+      return "Untuk ganti oli, kami melayani oli mesin, oli transmisi, dan penggantian filter oli.";
+    }
+
+    else if (text.includes("reservasi") || text.includes("booking")) {
+      return "Silakan isi form reservasi pada halaman ini. Setelah dikirim, data akan masuk ke WhatsApp admin Hans Garage.";
+    }
+
+    else if (text.includes("antrian")) {
+      let tanggalDipilih = document.getElementById("tanggal").value;
+
+      if (tanggalDipilih === "") {
+        return "Silakan pilih tanggal reservasi terlebih dahulu pada form, nanti saya bantu cek jumlah antriannya.";
+      }
+
+      let jumlah = dataAntrian[tanggalDipilih] ? dataAntrian[tanggalDipilih].length : 0;
+      return "Jumlah antrian pada tanggal " + tanggalDipilih + " adalah " + jumlah + " antrian.";
+    }
+
+    else if (text.includes("kontak") || text.includes("wa") || text.includes("whatsapp")) {
+      return "Anda bisa menghubungi Hans Garage melalui WhatsApp: 085604445893.";
+    }
+
+    else if (text.includes("terima kasih") || text.includes("makasih")) {
+      return "Sama-sama! Semoga kendaraan Anda selalu dalam kondisi prima.";
+    }
+
+    else {
+      return "Maaf, saya belum memahami pertanyaan tersebut. Silakan tanyakan tentang layanan, jam buka, harga, reservasi, kontak, atau antrian.";
+    }
+  }
+</script>
+
+</body>
+</html>
